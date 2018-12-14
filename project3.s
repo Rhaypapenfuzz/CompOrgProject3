@@ -35,7 +35,14 @@ loop:
 		sub $t3, $t1, $t6								
 		addi $t3, $t3, 1							#increment register by 1
 		li $t7, 4										
-		ble $t3, $t7, skip_string_is_too_long_instead_do_notvalid        
+		ble $t3, $t7, skip_string_is_too_long_instead_do_notvalid     
+		
+		li $v0, 4
+		la $a0,string_is_too_long
+		syscall									
+		jr $ra	
+	
+skip_string_is_too_long_instead_do_notvalid:
 		
        
 	
