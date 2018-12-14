@@ -1,4 +1,4 @@
-..data		
+.data		
 #Invalid Messages
 char_array:				.space 4000
 string_is_too_long:			.asciiz "Input is too long."
