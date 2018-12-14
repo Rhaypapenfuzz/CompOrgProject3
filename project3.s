@@ -39,6 +39,7 @@ loop:
 		
 		li $v0, 4
 		la $a0,string_is_too_long
+		
 		syscall									
 		jr $ra	
 	
@@ -47,6 +48,7 @@ skip_string_is_too_long_instead_do_notvalid:
 		li $v0, 4
 		la $a0, not_valid
 		syscall	
+		
 		li $v0, 10
 		syscall
 		
@@ -55,7 +57,13 @@ skip_invalid_spaces:
 		addi $t4, $t4, 1						#number_of_characters + 1
 dont_increase_number_of_characters:
 
-		bne $t7, $t0, dont_increase_space_counter			#if current character is a space and
+		bne $t7, $t0, dont_increase_space_counter			#if current character is a space
+		bne $t4, $0, dont_increase_space_counter			
+		addi $t6, $t6, 1
 		
+dont_increase_space_counter:
+
+		move $s0, $t7							#set previous character with current one
+		addi $t3, $t3, 1						#incremented the address
        
 	
