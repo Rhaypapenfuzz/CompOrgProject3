@@ -78,5 +78,12 @@ break_loop:
 		syscall								#print string_is_too_long_error if char>4
 		li $v0, 10
 		syscall
+		
+dont_print_string_is_too_long:
+        
+		bne $t4, $zero, dont_print_string_is_empty   #if user input is empty, and
+		beq $t7, $t5, dont_print_string_is_empty     #if user input is a newline
+		li $v0, 4
+		la $a0, string_is_empty
        
 	
