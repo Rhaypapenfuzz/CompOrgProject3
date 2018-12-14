@@ -98,4 +98,10 @@ dont_print_string_is_empty:
 		sw $ra, 0($sp)						
 
 		addi $sp, $sp, -8
-	
+		
+		sw $s0, 0($sp)								#set address of start of number
+		sw $t4, 4($sp)								#set length of number
+		jal convert_number
+
+		lw $t3, 0($sp)
+		addi $sp, $sp, 4
