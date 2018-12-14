@@ -85,5 +85,11 @@ dont_print_string_is_too_long:
 		beq $t7, $t5, dont_print_string_is_empty     #if user input is a newline
 		li $v0, 4
 		la $a0, string_is_empty
-       
+      		syscall
+		li $v0, 10
+		syscall
+dont_print_string_is_empty:
+	
+	#overwriting registers 
+		la $s0, char_array		
 	
