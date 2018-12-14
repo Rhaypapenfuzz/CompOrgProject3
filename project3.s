@@ -43,6 +43,12 @@ loop:
 		jr $ra	
 	
 skip_string_is_too_long_instead_do_notvalid:
+
+		li $v0, 4
+		la $a0, not_valid
+		syscall	
+		li $v0, 10
+		syscall
 		
        
 	
