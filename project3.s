@@ -72,5 +72,11 @@ break_loop:
 
 		li $t7, 4
 		ble $t4, $t7, dont_print_string_is_too_long			#checks if userInput is more than 4
+		
+		li $v0, 4
+		la $a0, string_is_too_long
+		syscall								#print string_is_too_long_error if char>4
+		li $v0, 10
+		syscall
        
 	
