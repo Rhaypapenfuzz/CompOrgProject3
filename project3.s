@@ -112,5 +112,11 @@ dont_print_string_is_empty:
 		
 		lw $ra, 0($sp)							#restore return address
 		addi $sp, $sp, 4						
+		jr $ra
 		
+convert_number:
+
+		lw $a0, 0($sp)
+		lw $a1, 4($sp)
+		addi $sp, $sp, 8	
 
