@@ -99,9 +99,18 @@ dont_print_string_is_empty:
 
 		addi $sp, $sp, -8
 		
-		sw $s0, 0($sp)								#set address of start of number
-		sw $t4, 4($sp)								#set length of number
+		sw $s0, 0($sp)							#set address of start of number
+		sw $t4, 4($sp)							#set length of number
 		jal convert_number
 
 		lw $t3, 0($sp)
 		addi $sp, $sp, 4
+		
+		li $v0, 1									
+		move $a0, $t3
+		syscall								#display result
+		
+		lw $ra, 0($sp)							#restore return address
+		addi $sp, $sp, 4						
+		
+
