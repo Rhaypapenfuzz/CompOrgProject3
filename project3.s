@@ -81,8 +81,8 @@ break_loop:
 		
 dont_print_string_is_too_long:
         
-		bne $t4, $zero, dont_print_string_is_empty   #if user input is empty, and
-		beq $t7, $t5, dont_print_string_is_empty     #if user input is a newline
+		bne $t4, $zero, dont_print_string_is_empty   		#if user input is empty, and
+		beq $t7, $t5, dont_print_string_is_empty     		#if user input is a newline
 		li $v0, 4
 		la $a0, string_is_empty
       		syscall
@@ -91,5 +91,11 @@ dont_print_string_is_too_long:
 dont_print_string_is_empty:
 	
 	#overwriting registers 
-		la $s0, char_array		
+		la $s0, char_array
+		add $s0, $s0, $t6						#got the address of the start of the number
+		
+		addi $sp, $sp, -4						#allocate space
+		sw $ra, 0($sp)						
+
+		addi $sp, $sp, -8
 	
