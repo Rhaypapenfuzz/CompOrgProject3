@@ -30,11 +30,12 @@ loop:
 		beq $t7, $0, skip_invalid_spaces          #character is not null &
 		beq $t7, $t5, skip_invalid_spaces         #the character is not a new line then proceed else skip to skip_invalid_spaces label
 	
-        li $v0, 4
-        la $a0, not_valid
-        syscall	
-	
-	#print invalid spaces
-	li $v0, 10
-	syscall
+	#if input is not_valid && string_is_too_long, choose string_is_too_long 
+		
+		sub $t3, $t1, $t6								
+		addi $t3, $t3, 1							#increment register by 1
+		li $t7, 4										
+		ble $t3, $t7, skip_string_is_too_long_instead_do_notvalid        
+		
+       
 	
