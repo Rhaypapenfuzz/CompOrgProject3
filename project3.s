@@ -65,5 +65,12 @@ dont_increase_space_counter:
 
 		move $s0, $t7							#set previous character with current one
 		addi $t3, $t3, 1						#incremented the address
+		addi $t1, $t1, 1						#incremented i
+		j loop
+		
+break_loop:
+
+		li $t7, 4
+		ble $t4, $t7, dont_print_string_is_too_long			#checks if userInput is more than 4
        
 	
