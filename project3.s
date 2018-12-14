@@ -50,5 +50,12 @@ skip_string_is_too_long_instead_do_notvalid:
 		li $v0, 10
 		syscall
 		
+skip_invalid_spaces:
+		beq $t7, $t0, dont_increase_number_of_characters		#branch if current character is a space else proceed
+		addi $t4, $t4, 1						#number_of_characters + 1
+dont_increase_number_of_characters:
+
+		bne $t7, $t0, dont_increase_space_counter			#if current character is a space and
+		
        
 	
