@@ -150,3 +150,9 @@ ignore_number:
 	
 		move $a0, $s1					#set arguments for power_to_31
 		jal power_to_31
+		move $s3, $v0								
+	
+		lb $t3, 0($s0)					#loads the first element of the array
+		move $a0, $t3
+		jal character_to_digit
+		move $t3, $v0
