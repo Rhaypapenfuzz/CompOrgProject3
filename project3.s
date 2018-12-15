@@ -220,7 +220,7 @@ character_to_digit:
 		move $v0, $a0									
 		jr $ra
 		
-skip_converting_capital_to_digit
+skip_converting_capital_to_digit:
 
 		li $t1, 97												
 		li $t0, 117							#least and largest ascii value for lowercase a - u
