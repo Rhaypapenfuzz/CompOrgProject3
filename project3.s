@@ -197,4 +197,11 @@ ignore_zero_exponent:
 
 		addi $a0, $a0, -1				#setting argument for recursion call
 		jal power_to_31
-		move $t7, $v0								
+		move $t7, $v0
+		li $t1,31									
+		mul $v0, $t1, $t7				#put multiplication result into $v0
+
+leave_num_power:
+
+		lw $ra, 0($sp)					#restore address
+		addi $sp, $sp, 4						
