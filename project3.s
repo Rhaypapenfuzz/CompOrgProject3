@@ -215,3 +215,8 @@ character_to_digit:
 
 	#convert uppercase letter to decimal
 		blt $a0, $t1, skip_converting_capital_to_digit			#if ascii of char >= 65 and
+		bgt $a0, $t0, skip_converting_capital_to_digit			#if char <= 85
+		addi $a0, $a0, -55										#subtract 55 to get the decimal equivalent of A-U
+		move $v0, $a0									
+		jr $ra
+skip_converting_capital_to_digit:
