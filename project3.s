@@ -192,4 +192,9 @@ power_to_31:
 		li $t3, 0
 		bne $a0, $t3, ignore_zero_exponent
 		li $v0, 1
-		
+		j leave_num_power
+ignore_zero_exponent:
+
+		addi $a0, $a0, -1				#setting argument for recursion call
+		jal power_to_31
+		move $t7, $v0								
