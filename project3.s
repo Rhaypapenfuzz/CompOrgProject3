@@ -186,4 +186,10 @@ leave_convert_number:
 
 		jr $ra
 power_to_31:
+		addi $sp, $sp, -4				#allocate space
+		sw $ra, 0($sp)					#store returning address
+		
+		li $t3, 0
+		bne $a0, $t3, ignore_zero_exponent
+		li $v0, 1
 		
