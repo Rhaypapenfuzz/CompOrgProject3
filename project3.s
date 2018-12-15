@@ -92,15 +92,15 @@ dont_print_string_is_empty:
 	
 	#overwriting registers 
 		la $s0, char_array
-		add $s0, $s0, $t6						#got the address of the start of the number
+		add $s0, $s0, $t6					#got the address of the start of the number
 		
-		addi $sp, $sp, -4						#allocate space
+		addi $sp, $sp, -4					#allocate space
 		sw $ra, 0($sp)						
 
 		addi $sp, $sp, -8
 		
-		sw $s0, 0($sp)							#set address of start of number
-		sw $t4, 4($sp)							#set length of number
+		sw $s0, 0($sp)						#set address of start of number
+		sw $t4, 4($sp)						#set length of number
 		jal convert_number
 
 		lw $t3, 0($sp)
@@ -108,9 +108,9 @@ dont_print_string_is_empty:
 		
 		li $v0, 1									
 		move $a0, $t3
-		syscall								#display result
+		syscall							#display result
 		
-		lw $ra, 0($sp)							#restore return address
+		lw $ra, 0($sp)						#restore return address
 		addi $sp, $sp, 4						
 		jr $ra
 		
@@ -125,4 +125,13 @@ convert_number:
 		sw $ra, 0($sp)								
 		sw $s0, 4($sp)						#s0  = used for address of array			
 		sw $s1, 8($sp)							
-		sw $s2, 12($sp)			
+		sw $s2, 12($sp)
+		sw $s3, 16($sp)								
+
+#transfer arguments to s-registers
+		move $s0, $a0							
+		move $s1, $a1		
+
+		#base
+		li $t3, 1
+		bne $s1, $t3, ignore_number					#if length is equal 1
