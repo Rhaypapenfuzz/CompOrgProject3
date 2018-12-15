@@ -204,4 +204,14 @@ ignore_zero_exponent:
 leave_num_power:
 
 		lw $ra, 0($sp)					#restore address
-		addi $sp, $sp, 4						
+		addi $sp, $sp, 4				
+		
+		jr $ra
+		
+character_to_digit:
+		
+		li $t1, 65
+		li $t0, 85
+
+	#convert uppercase letter to decimal
+		blt $a0, $t1, skip_converting_capital_to_digit			#if ascii of char >= 65 and
