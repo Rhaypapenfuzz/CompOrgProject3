@@ -221,7 +221,7 @@ character_to_digit:
 		jr $ra
 		
 skip_converting_capital_to_digit:
-
+	#lowercase to decimal
 		li $t1, 97												
 		li $t0, 117							#least and largest ascii value for lowercase a - u
 		blt $a0, $t1, skip_converting_lowercase_to_digit		#if value >= 85 and
