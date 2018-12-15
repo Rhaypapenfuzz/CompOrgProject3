@@ -173,3 +173,10 @@ ignore_number:
 		add $t3, $s2, $t3				#conversion result + first number and put the return value in $t3
 
 leave_convert_number:
+
+		lw $ra, 0($sp)								
+		lw $s0, 4($sp)						
+		lw $s1, 8($sp)								
+		lw $s2, 12($sp)							
+		lw $s3, 16($sp)
+		
