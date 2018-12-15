@@ -216,14 +216,20 @@ character_to_digit:
 	#convert uppercase letter to decimal
 		blt $a0, $t1, skip_converting_capital_to_digit			#if ascii of char >= 65 and
 		bgt $a0, $t0, skip_converting_capital_to_digit			#if char <= 85
-		addi $a0, $a0, -55										#subtract 55 to get the decimal equivalent of A-U
+		addi $a0, $a0, -55						#subtract 55 to get the decimal equivalent of A-U
 		move $v0, $a0									
 		jr $ra
 		
 skip_converting_capital_to_digit
 
 		li $t1, 97												
-		li $t0, 117												#least and largest ascii value for lowercase a - u
+		li $t0, 117							#least and largest ascii value for lowercase a - u
 		blt $a0, $t1, skip_converting_lowercase_to_digit		#if value >= 85 and
 		bgt $a0, $t0, skip_converting_lowercase_to_digit		#if value <= 117
 		addi $a0, $a0, -87										
+		move $v0, $a0
+		jr $ra
+skip_converting_lowercase_to_digit:
+
+		li $t1, 48													
+		li $t0, 57							#least and largest ascii value for integers 0-9
