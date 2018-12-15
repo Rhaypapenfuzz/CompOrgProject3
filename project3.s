@@ -142,3 +142,11 @@ convert_number:
 		move $t7, $v0					#get result
 	
 		move $t3, $t7					#put the first element in $t3, before it's put on the stack to be returned
+
+		j leave_convert_number
+ignore_number:
+
+		addi $s1, $s1, -1							
+	
+		move $a0, $s1					#set arguments for power_to_31
+		jal power_to_31
