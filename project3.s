@@ -179,4 +179,11 @@ leave_convert_number:
 		lw $s1, 8($sp)								
 		lw $s2, 12($sp)							
 		lw $s3, 16($sp)
+		addi $sp, $sp, 20							
+
+		addi $sp, $sp, -4
+		sw $t3, 0($sp)
+
+		jr $ra
+power_to_31:
 		
