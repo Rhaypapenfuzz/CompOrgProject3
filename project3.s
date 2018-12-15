@@ -238,3 +238,11 @@ skip_converting_lowercase_to_digit:
 		addi $a0, $a0, -48						#get the decimal value of ascii number
 		move $v0, $a0
 		jr $ra	
+		
+skip_converting_digit_character_to_integer:
+	
+		li $v0, 4
+		la $a0, not_valid
+		syscall
+		li $v0, 10
+		syscall
