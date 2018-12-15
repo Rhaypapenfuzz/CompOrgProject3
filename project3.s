@@ -233,3 +233,8 @@ skip_converting_lowercase_to_digit:
 
 		li $t1, 48													
 		li $t0, 57							#least and largest ascii value for integers 0-9
+		blt $a0, $t1, skip_converting_digit_character_to_integer	#convert if ascii[value] >= 48 and
+		bgt $a0, $t0, skip_converting_digit_character_to_integer	#if ascii[value] <= 57
+		addi $a0, $a0, -48						#get the decimal value of ascii number
+		move $v0, $a0
+		jr $ra	
