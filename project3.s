@@ -156,3 +156,11 @@ ignore_number:
 		move $a0, $t3
 		jal character_to_digit
 		move $t3, $v0
+		mul $s2, $t3, $s3
+		addi $s0, $s0, 1				#increment ptr to start of array
+	
+
+	#recursion
+		addi $sp, $sp, -8
+		sw $s0, 0($sp)
+		sw $s1, 4($sp)
