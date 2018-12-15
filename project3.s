@@ -164,3 +164,12 @@ ignore_number:
 		addi $sp, $sp, -8
 		sw $s0, 0($sp)
 		sw $s1, 4($sp)
+
+		jal convert_number
+
+		lw $t3, 0($sp)
+		addi $sp, $sp, 4
+		
+		add $t3, $s2, $t3				#conversion result + first number and put the return value in $t3
+
+leave_convert_number:
